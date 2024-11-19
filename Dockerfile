@@ -1,7 +1,7 @@
 ARG VERSION=1.16.0
 
-FROM python:3.7-alpine3.11
-LABEL maintainer="Luke Childs <lukechilds123@gmail.com>"
+FROM python:3.8-alpine3.20
+LABEL maintainer="ElderBlade <10776624+ElderBlade@users.noreply.github.com>"
 
 ARG VERSION
 
@@ -9,7 +9,7 @@ COPY ./bin /usr/local/bin
 
 RUN chmod a+x /usr/local/bin/* && \
     apk add --no-cache git build-base openssl && \
-    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.11/main leveldb-dev && \
+    apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/v3.20/main leveldb-dev && \
     apk add --no-cache --repository http://dl-cdn.alpinelinux.org/alpine/edge/testing rocksdb-dev && \
     pip install aiohttp pylru plyvel websockets python-rocksdb uvloop && \
     git clone -b $VERSION https://github.com/spesmilo/electrumx.git && \
